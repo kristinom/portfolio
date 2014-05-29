@@ -1,0 +1,416 @@
+@import "compass", "compass/reset", "susy";
+
+//Colors
+$accentColor: #f7e555;
+$mainColor: #b7335e;
+$white: #fffffe;
+$bgColor: #f3e9de;
+$txtColor: #5d2437;
+$opaque: rgba(255,255,255,.4);
+$experimental-support-for-svg: true;
+
+
+//Susy Grid
+$total-columns: 12; 
+$column-width: 4em;
+$gutter-width: 1em;
+$grid-padding: 1em;
+
+
+//fonts + spacing
+$bold: arvobold;
+$base-font-size: 18px;
+$base-line-height:30px;
+$font-unit: 1em;
+$double-rhythm-unit: 3.2em;
+$base-rhythm-unit: 1.6em;
+$half-rhythm-unit: .8em;
+$fourth-rhythm-unit: .4em;
+$padding: .4em;
+
+
+//responsive!!
+$break-small: 480px;
+$break-large: 850px;
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+
+
+//clearfix
+@mixin clearfix {
+    &:after,
+    &:before {
+        content: "";
+        display: table };
+    &:after {
+        clear: both};
+        *zoom: 1}
+.clearfix { @include clearfix}
+
+
+// Grid/Framework classes
+.container { @include container; @include border-box-sizing;}
+.whole {@include span-columns(12,12);}
+.threefourths {@include span-columns(9,12);}
+.fivesixths {@include span-columns(10,12);@include respond-to(tablet){@include span-columns(8,12); margin:0}}
+.twothirds {@include span-columns(8,12);
+@include respond-to(mobile){@include span-columns(12,12)}
+}
+.half {@include span-columns(6,12);@include respond-to(mobile){@include span-columns(12,12)};@include respond-to(tablet){@include span-columns(12,12)}}
+.third {@include span-columns(4,12);}
+.fourth {@include span-columns(3,12);&:nth-of-type(4n){margin-right:0;}
+@include respond-to(mobile){@include span-columns(12,12)}
+@include respond-to(tablet){@include span-columns(6,12); &:nth-of-type(2n){margin-right:0;}}
+}
+.sixth {@include span-columns(2,12);&:nth-of-type(6n) { margin-right:0; };
+@include respond-to(mobile){@include span-columns(6,12); &:nth-of-type(2n){margin-right:0;}};
+@include respond-to(tablet){@include span-columns(3,12); margin-right:0;}
+}
+.fivesixths {@include span-columns(10,12); @include respond-to(mobile){@include span-columns(12,12)}; @include respond-to(tablet){@include span-columns(12,12)}}
+.omega {margin-right:0;}
+.fr {float:right}
+.fl {float:left}
+.navlinks {@include respond-to(mobile){@include span-columns(12,12)};@include respond-to(tablet){@include span-columns(6,12)};}
+
+//text + link stuff (non-specific)
+p {margin: $fourth-rhythm-unit auto;}
+
+.large {font-size: 1.5em; line-height:45px;}
+
+h1.large {margin-bottom: $base-rhythm-unit;}
+
+h1.name {
+	font-size:4.5em;
+	line-height:1;
+	font-family: $bold;
+	@include respond-to(mobile){font-size:3em};
+	@include respond-to(tablet){font-size:5em};
+	color: $mainColor;
+	text-shadow: -1px 1px 0px $accentColor, -2px 2px 0px $mainColor, 2px 2px 0px $txtColor;
+	margin-top:$fourth-rhythm-unit;
+}
+
+h1.portfolio {
+	font-size:3em;
+	line-height:1;
+	font-family: $bold;
+	color: $mainColor; margin:$fourth-rhythm-unit 0 0 0; 
+	text-shadow: -1px 1px 0px $accentColor, -2px 2px 0px $mainColor,2px 2px 0px $txtColor;
+}
+
+.small {font-size: .75em; line-height:22.5px; margin-bottom:$base-rhythm-unit}
+.tc {text-align:center}
+a {color:$mainColor}
+a:hover {background:$accentColor; color:$txtColor; border:none; text-deoration:none; text-shadow:none; box-shadow:none;}
+h2 {font-family:$bold; @extend .large;}
+.accent {font-family: $bold;}
+ul.horizontal {@include inline-block-list}
+
+
+//img stuff
+img {max-width:100%;}
+svg {width:100%}
+
+
+//rulers
+hr.styled {border: 0; background: $mainColor;margin: .25em 0 .75em 0; width:100%; height:1px; @include background-image(linear-gradient(left, $bgColor 0%, $mainColor 50%, $bgColor 100%));}
+hr.thickstyled {border: 0; background: $mainColor;margin: .25em 0 .75em 0; width:100%; height:5px; @include background-image(linear-gradient(left, $mainColor 0%, $white 50%, $mainColor 100%));}
+.portfolio {
+	hr.styled {@include background-image(linear-gradient(left, $mainColor 0%, $bgColor 50%, $mainColor 100%));};
+}
+
+
+
+//structure stuff
+html {overflow-y: scroll;}
+
+body {
+	background: $white url(../images/footerbg.jpg);
+	font-family: arvoregular;
+	font-size:$base-font-size;
+	line-height:$base-line-height;
+	@include establish-baseline;
+	color:$txtColor;
+}
+
+
+a.block { display:block; width:100%; background: $accentColor; color: $txtColor; text-align:center; font-size: 1.5em; padding: .25em; text-decoration:none; margin:$half-rhythm-unit 0; font-family: $bold; @include box-shadow(rgba($txtColor, 0.2) 2px 2px 2px); border-right:1px solid #aaa; border-bottom:1px solid #aaa; border-top: 1px solid $white; border-left:1px solid $white; @include clearfix;}
+	a.block:hover {box-shadow:none; border-right:1px solid $bgColor; border-bottom:1px solid $bgColor; border-top: 1px solid #bbb; border-left:1px solid #bbb}
+
+footer {margin: $base-rhythm-unit 0; 
+	a {color:$txtColor; text-decoration:none}; a:hover {border:none; text-deoration:none; text-shadow:none};
+	li {margin: $half-rhythm-unit auto $fourth-rhythm-unit auto;};
+	li:first-child {margin-right:$half-rhythm-unit}
+	img {margin: 0 $fourth-rhythm-unit;}
+} 
+
+
+//About Page styles
+#about {
+	background: $opaque; padding:$half-rhythm-unit; border:1px solid $white; @include border-radius(.5em); @include box-shadow(rgba($txtColor, 0.2) 2px 4px 8px);margin: $base-rhythm-unit 0;  
+}
+
+
+.compassbg {
+	background-image: url('../images/compass.svg');
+	background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center;
+    //@include opacity(.5);
+
+}
+.bold, .b, b {font-family:$bold}
+.inset {@include box-shadow(rgba($txtColor, .5) 0px 5px 5px inset); border-bottom:5px solid $white}
+
+.cover {
+	background-image: url('../images/header.png');
+    background-size: cover;
+    background-position: center;
+}
+.star:after {
+	content: "\2605 \2605 \2605 \2605 \2605";
+	color: $bgColor;
+	padding:.3em;
+	font-size:22px;
+	font-weight:700;
+	line-height:1;
+	@include text-shadow(rgba($mainColor, 0.2) 1px 1px 0, rgba($mainColor, 0.2) 2px 2px 0, rgba($mainColor, 0.2) 3px 3px 0);
+	@include transition-property(color);
+  	@include transition-duration(1s);
+}
+.star:hover:after {
+	color:$accentColor;
+}
+.fivestar:after {content: "\2605 \2605 \2605 \2605 \2605";}
+.fourstar:after {content: "\2605 \2605 \2605 \2605";}
+.threestar:after {content: "\2605 \2605 \2605";}
+
+
+// Portfolio page styles
+.portfolio {
+	@include clearfix;
+	.recent {
+		img {margin: $base-rhythm-unit auto;  @include box-shadow(rgba($txtColor, 0.2) 2px 4px 8px); border:5px solid $white;}
+	}
+	//background: $mainColor url(../images/footerbg.jpg);
+	//color:$bgColor;
+	//a, footer a{color:$white}; a:hover, footer a:hover {color:$txtColor}
+	nav a.active {color:$bgColor;}; nav a:hover{color:$bgColor}
+	.opacity-50 img { @include border-radius(100%); &:hover {@include opacity(1)}};
+	
+}
+
+//Fonts
+@font-face {
+    font-family: 'arvobold';
+    src: url('../fonts/arvo-bold-webfont.eot');
+    src: url('../fonts/arvo-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/arvo-bold-webfont.woff') format('woff'),
+         url('../fonts/arvo-bold-webfont.ttf') format('truetype'),
+         url('../fonts/arvo-bold-webfont.svg#arvobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'arvoregular';
+    src: url('../fonts/arvo-regular-webfont.eot');
+    src: url('../fonts/arvo-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/arvo-regular-webfont.woff') format('woff'),
+         url('../fonts/arvo-regular-webfont.ttf') format('truetype'),
+         url('../fonts/arvo-regular-webfont.svg#arvoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*{ @include border-box-sizing;}
+/* GRIDDER CSS */
+.gridder{
+	margin: 0 auto;
+	font-size:0;
+
+}
+
+.gridder-list {
+	width:23%;
+	margin-right:2%;
+	margin-bottom:1%;
+	@include respond-to(tablet) {width:49%; margin-right:2%; &:nth-of-type(2n){margin-right:0;} };
+	@include respond-to(mobile) {width:100%; margin-right:0;};
+	display:inline-block;
+	*display:inline;
+	white-space-collapsing:discard;
+	zoom:1;
+	cursor:pointer;
+	position:relative;
+	&:nth-of-type(4n){margin-right:0;}
+	.gridder-thumb{
+		display:block;
+		}
+	
+	&.first{margin-left:0px;}
+}
+
+
+.gridder-list.imactive{
+	margin-bottom:26px;
+	img {border-color:$accentColor}
+	.overlay{
+				
+	}
+	
+	&:after{
+		content: "";
+		width: 0px;
+		height: 0px;
+		border-style: solid;
+		border-width: 0 14px 17px 14px;
+		border-color: transparent transparent $white transparent;
+		
+		display:block;
+		position:absolute;
+		bottom:0px;
+		left: 40%;
+		margin-bottom:-26px;
+	}
+}
+
+.gridder-image,
+.gridder-content{
+	display:none;
+}
+
+.gridder-show {
+	text-align:center;
+	position:relative;
+	background: $bgColor url(../images/basebg.jpg);
+	float:left;
+	padding:0px;
+	display:none;
+	overflow:hidden;
+	font-size:0;
+	width:100%;
+	padding: 5%;
+	margin-bottom:1%;
+	min-height:300px;
+	@include box-shadow(rgba($txtColor, 0.2) 2px 4px 5px inset);
+	border:5px solid $white;
+	background: $opaque;
+
+	.image{
+	@include span-columns(8,12);
+	@include respond-to(tablet) {width:100%; margin-right:0;};
+	@include respond-to(mobile) {width:100%; margin-right:0;};
+	}
+	
+	.content{
+		@include span-columns(4,12);
+		@include respond-to(tablet) {width:100%; margin-right:0;};
+		float:right;
+		width:30%;
+			@include respond-to(tablet) {width:100%; margin-right:0; margin-top:.5em};
+	@include respond-to(mobile) {width:100%; margin-right:0; margin-top:.5em};
+		text-align:left;
+		margin-right:0;
+		color:$txtColor;
+		font-size:16px;
+		a.expand {color: $txtColor}
+		ul {list-style-type:disc}
+		h2{
+			font-size:30px;
+			margin:0px;
+			margin-bottom:15px;
+		}
+		
+	}	
+	
+	img{
+		box-shadow:0 1px 4px #222;
+		display:block;
+		max-width:100%;
+		@include respond-to(tablet) {width:80%;float:none; margin:0 auto;};
+		@include respond-to(mobile) {width:80%;float:none; margin:0 auto;};
+	}
+}
+
+.gridder-show:after {
+	content: ".";
+	display: block;
+	height: 0;
+	overflow: hidden;
+}
+
+.gridder-float {
+	float:left;
+}
+.gridder-close {
+	cursor:pointer;
+	position:absolute;
+	top:15px;
+	right:15px;
+	background:url("../images/close.png") no-repeat center center;
+	width:13px;
+	height:13px;
+}
+
+.gridder-prev {
+	opacity:1;
+	cursor:pointer;
+	position:absolute;
+	top:50px;
+	left:10px;
+	background:url("../images/prev.png") no-repeat center center;
+	width:40px;
+	height:99px;
+}
+.gridder-next {
+	opacity:1;
+	cursor:pointer;
+	position:absolute;
+	top:50px;
+	right:10px;
+	background:url("../images/next.png") no-repeat center center;
+	width:40px;
+	height:99px;
+}
+
+
+
+
+.gridder-list:hover { 
+        -moz-animation:bounce .5s linear;  
+        -webkit-animation:bounce .5s linear;
+
+} 
+
+.gridder-list img:hover {
+	border-color:$accentColor;
+        @include transition-property(bordercolor);
+  		@include transition-duration(.5s);}
+
+@-moz-keyframes bounce {
+        // 10%{ -moz-transform:scale(.25); opacity:0;}
+        50% { -moz-transform:scale(1.1); }
+        100%{ -moz-transform:scale(1); }
+}
+
+@-webkit-keyframes bounce {
+        // 10%{ -webkit-transform:scale(.25); opacity:0;}
+        50% {-webkit-transform:scale(1.1); }
+        100%{ -webkit-transform:scale(1); }
+}
+
+
+.gridder-list .standout img {border-color:$mainColor}
