@@ -374,21 +374,27 @@ h1 {
 }
 
 /* line 92, ../sass/lakers.scss */
+h1.max {
+  color: #ffc726;
+  line-height: 120%;
+}
+
+/* line 93, ../sass/lakers.scss */
 .milli {
   font-size: .75em;
 }
 
-/* line 93, ../sass/lakers.scss */
+/* line 94, ../sass/lakers.scss */
 .micro {
   font-size: .5em;
 }
 
-/* line 94, ../sass/lakers.scss */
+/* line 95, ../sass/lakers.scss */
 strong {
   font-weight: bold;
 }
 
-/* line 95, ../sass/lakers.scss */
+/* line 96, ../sass/lakers.scss */
 .linkbutton {
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
@@ -401,7 +407,7 @@ strong {
   color: #702f8a;
 }
 
-/* line 96, ../sass/lakers.scss */
+/* line 97, ../sass/lakers.scss */
 h4 {
   background: #702f8a;
   color: #fffffe;
@@ -410,31 +416,31 @@ h4 {
   text-align: center;
 }
 
-/* line 99, ../sass/lakers.scss */
+/* line 100, ../sass/lakers.scss */
 table {
   margin: 0 auto;
 }
 
-/* line 100, ../sass/lakers.scss */
+/* line 101, ../sass/lakers.scss */
 thead {
   font-weight: bold;
   border-bottom: 1px solid #ffc726;
 }
 
-/* line 101, ../sass/lakers.scss */
+/* line 102, ../sass/lakers.scss */
 td, th {
   padding: .5em;
   vertical-align: top;
   text-align: center;
 }
 @media only screen and (max-width: 550px) {
-  /* line 101, ../sass/lakers.scss */
+  /* line 102, ../sass/lakers.scss */
   td, th {
     padding: .15em;
   }
 }
 
-/* line 104, ../sass/lakers.scss */
+/* line 105, ../sass/lakers.scss */
 .lakersgameday {
   background: #702f8a url(../images/lal_background_pattern_01_0.jpg);
   overflow-y: scroll;
@@ -442,20 +448,20 @@ td, th {
   font-size: 81.25%;
   line-height: 150%;
 }
-/* line 109, ../sass/lakers.scss */
+/* line 110, ../sass/lakers.scss */
 .lakersgameday *, .lakersgameday *:before, .lakersgameday *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 112, ../sass/lakers.scss */
+/* line 113, ../sass/lakers.scss */
 .lakersgameday body {
   background: #fffffe;
   max-width: 1140px;
   margin: 20px auto;
   padding: 1em;
 }
-/* line 119, ../sass/lakers.scss */
+/* line 120, ../sass/lakers.scss */
 .lakersgameday .alpha {
   text-align: center;
   background: #702f8a url(../images/lal_background_pattern_01_0_for_scores.jpg);
@@ -465,7 +471,7 @@ td, th {
   border-bottom: 0.5em solid #ffc726;
   color: #fffffe;
 }
-/* line 129, ../sass/lakers.scss */
+/* line 130, ../sass/lakers.scss */
 .lakersgameday .scorestoplevel {
   color: black;
   text-shadow: 1px 1px 1px #fffffe;
@@ -475,11 +481,11 @@ td, th {
   -moz-box-shadow: rgba(112, 47, 138, 0.2) 2px 4px 8px;
   box-shadow: rgba(112, 47, 138, 0.2) 2px 4px 8px;
 }
-/* line 135, ../sass/lakers.scss */
+/* line 136, ../sass/lakers.scss */
 .lakersgameday .scorestoplevel .half:first-of-type {
   border-right: 1px solid #ccc;
 }
-/* line 136, ../sass/lakers.scss */
+/* line 137, ../sass/lakers.scss */
 .lakersgameday .scorestoplevel .round {
   width: 3em;
   height: 3em;
@@ -494,11 +500,11 @@ td, th {
   background: #ffc726;
   border: 1px solid #fffffe;
 }
-/* line 139, ../sass/lakers.scss */
+/* line 140, ../sass/lakers.scss */
 .lakersgameday .scorestoplevel .charlotte {
   background: #f26532;
 }
-/* line 142, ../sass/lakers.scss */
+/* line 143, ../sass/lakers.scss */
 .lakersgameday .scoreboard {
   padding: 1em;
   margin: 1em 0;
@@ -508,39 +514,39 @@ td, th {
   background-image: -o-linear-gradient(left, #fffffe, #eeeeee, #fffffe);
   background-image: linear-gradient(left, #fffffe, #eeeeee, #fffffe);
 }
-/* line 148, ../sass/lakers.scss */
+/* line 149, ../sass/lakers.scss */
 .lakersgameday .opaque {
   background: rgba(255, 255, 255, 0.2);
   padding: .5em 2em;
   border: 1px solid #702f8a;
   margin: 0 auto;
 }
-/* line 156, ../sass/lakers.scss */
+/* line 157, ../sass/lakers.scss */
 .lakersgameday .picturelink {
   border: 1px solid #ffc726;
   background: #ffc726;
   text-align: center;
 }
-/* line 156, ../sass/lakers.scss */
+/* line 157, ../sass/lakers.scss */
 .lakersgameday .picturelink img {
   margin-bottom: 1em;
 }
-/* line 159, ../sass/lakers.scss */
+/* line 160, ../sass/lakers.scss */
 .lakersgameday .gamedetails {
   background: #eee;
   padding: .5em;
   text-align: center;
 }
-/* line 160, ../sass/lakers.scss */
+/* line 161, ../sass/lakers.scss */
 .lakersgameday .gamedetails div {
   margin-bottom: 1em;
 }
-/* line 161, ../sass/lakers.scss */
+/* line 162, ../sass/lakers.scss */
 .lakersgameday .gamedetails h5 {
   text-align: center;
   background: #fffffe;
 }
-/* line 162, ../sass/lakers.scss */
+/* line 163, ../sass/lakers.scss */
 .lakersgameday .gamedetails ul {
   width: 100%;
   *zoom: 1;
@@ -555,27 +561,27 @@ td, th {
 .lakersgameday .gamedetails ul:after {
   clear: both;
 }
-/* line 163, ../sass/lakers.scss */
+/* line 164, ../sass/lakers.scss */
 .lakersgameday .gamedetails ul li {
   text-align: left;
   list-style-type: circle;
   margin-left: 1.5em;
 }
-/* line 166, ../sass/lakers.scss */
+/* line 167, ../sass/lakers.scss */
 .lakersgameday article aside {
   background: #fffffe;
   border: 1px solid #ffc726;
 }
-/* line 166, ../sass/lakers.scss */
+/* line 167, ../sass/lakers.scss */
 .lakersgameday article aside h4 {
   margin: 0;
 }
-/* line 166, ../sass/lakers.scss */
+/* line 167, ../sass/lakers.scss */
 .lakersgameday article aside ul {
   background: #eee;
   padding: .5em;
 }
-/* line 166, ../sass/lakers.scss */
+/* line 167, ../sass/lakers.scss */
 .lakersgameday article aside ul li {
   margin-bottom: .25em;
 }
