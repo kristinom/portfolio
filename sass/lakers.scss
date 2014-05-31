@@ -1,0 +1,168 @@
+@import "compass", "compass/reset", "susy";
+
+//Colors
+$lakersPurple: #702f8a;
+$lakersGold: #FFC726;
+$white: #fffffe;
+$lakersGoldlight: lighten($lakersGold, 25%);
+$charlotte: #F26532;
+$opaque: rgba(255,255,255,.2);
+$opacity-50: rgba(255,255,255,.5);
+
+//clearfix
+@mixin clearfix {
+    &:after,
+    &:before {
+        content: "";
+        display: table };
+    &:after {
+        clear: both};
+        *zoom: 1}
+.clearfix { @include clearfix}
+
+//img & video stuff
+img {max-width:100%;}
+svg {width:100%}
+.deltaad{display:block; margin:0 auto;}
+video {
+  width: 100%    !important;
+  height: auto   !important;
+}
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+	margin-bottom:.5em;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+//responsive!!
+$break-small: 550px;
+$break-large: 850px;
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+
+// Grid/Framework classes
+.container { @include container; @include border-box-sizing;}
+.whole {@include span-columns(12,12);}
+.threefourths {@include span-columns(9,12);}
+.fivesixths {@include span-columns(10,12);@include respond-to(tablet){@include span-columns(8,12); margin:0}}
+.twothirds {@include span-columns(8,12);
+@include respond-to(mobile){@include span-columns(12,12)}
+}
+.half {@include span-columns(6,12);@include respond-to(mobile){@include span-columns(12,12)};@include respond-to(tablet){@include span-columns(12,12)}}
+.third {@include span-columns(4,12);@include respond-to(mobile){@include span-columns(12,12)};}
+.fourth {@include span-columns(3,12);&:nth-of-type(4n){margin-right:0;}
+@include respond-to(mobile){@include span-columns(12,12)}
+@include respond-to(tablet){@include span-columns(6,12); &:nth-of-type(2n){margin-right:0;}}
+}
+.sixth {@include span-columns(2,12);
+@include respond-to(mobile){@include span-columns(6,12); &:nth-of-type(2n){margin-right:0;}};
+@include respond-to(tablet){@include span-columns(3,12); margin-right:0;}
+}
+.fivesixths {@include span-columns(10,12); @include respond-to(mobile){@include span-columns(12,12)}; @include respond-to(tablet){@include span-columns(12,12)}}
+.omega {margin-right:0;}
+
+//base styles
+.fr {float:right}
+.fl {float:left}
+.mt {margin-top: 1em}
+.mb {margin-bottom: 1em}
+p {margin: 1em auto;}
+h1, .mega {font-size:2em; line-height:120%;}
+.max {font-size:4em; line-height:90%;}
+h1 {font-weight:bold}
+.milli {font-size:.75em}
+.micro {font-size:.5em}
+strong {font-weight:bold}
+.linkbutton {@include border-radius(.5em); background:$lakersGold; text-align:center; padding:.2em; color:$lakersPurple}
+h4 {background: $lakersPurple; color:$white; margin-top:1em; margin-bottom:.5em; text-align:center}
+
+//table
+table {margin:0 auto}
+thead {font-weight:bold; border-bottom:1px solid $lakersGold}
+td, th {padding:.5em; vertical-align:top; text-align:center; @include respond-to(mobile){padding:.15em;}}
+
+
+.lakersgameday {
+	background: $lakersPurple url(../images/lal_background_pattern_01_0.jpg);
+	overflow-y: scroll;
+	font-family:Arial,Helvetica,Verdana,"Bitstream Vera Sans",sans-serif;font-size:81.25%;line-height:150%;
+
+	*, *:before, *:after {
+		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+	
+	body {
+		background: $white;
+		max-width: 1140px;
+		margin: 20px auto;
+		padding: 1em;
+	}
+
+	.alpha {
+		text-align:center;
+		background: $lakersPurple url(../images/lal_background_pattern_01_0_for_scores.jpg);
+		background-size: cover;
+		background-position: center;
+		padding: 1em;
+		border-bottom: .5em solid $lakersGold;
+		color:$white;
+	}
+
+	.scorestoplevel {
+		color:black;
+		text-shadow: 1px 1px 1px $white;
+		padding:1em;
+		background:$opaque;
+		@include box-shadow(rgba($lakersPurple, 0.2) 2px 4px 8px);
+		.half{&:first-of-type{border-right:1px solid #ccc}}
+		.round {width:3em; height:3em; line-height:3em; text-align:center; font-size:2em;
+			@include border-radius(6em); background:$lakersGold; border:1px solid $white;
+		}
+		.charlotte {background: $charlotte}
+	}
+
+	.scoreboard {
+		padding:1em;
+		margin: 1em 0;
+		@include background-image(linear-gradient(left, $white, #eee, $white));
+	}
+
+	.opaque {
+		background: $opaque;
+		padding: .5em 2em;
+		border:1px solid $lakersPurple;
+		margin: 0 auto;
+
+	}
+
+	.picturelink {border:1px solid $lakersGold; background:$lakersGold;text-align:center; img{margin-bottom:1em}}
+
+
+	.gamedetails {background: #eee; padding:.5em; text-align:center;
+		div {margin-bottom:1em}
+		h5 {text-align:center; background:$white}
+		ul{width:100%; @include clearfix; margin-bottom: 1em;}
+		ul li {text-align:left; list-style-type:circle; margin-left: 1.5em}
+	}
+
+	article aside {background: $white; border: 1px solid $lakersGold; h4 { margin:0}; ul {background:#eee; padding:.5em; li {margin-bottom:.25em}}}
+
+}
